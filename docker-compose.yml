@@ -1,0 +1,43 @@
+version: '2'
+
+services:
+  nginx:
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile
+    image: fabiolnh/nginx
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    networks:
+      - netw
+  
+  nodejs:
+    build: 
+      context: ./nodejs
+      dockerfile: Dockerfile
+    image: fabiolnh/nodejs
+    container_name: nodejs
+    networks: 
+      - netw
+#    ports: 
+#      - "3000:3000"
+
+  db:
+    image: mysql:5.7
+    command: --init-file /data/application/init.sql --innodb-use-native-aio=0 
+    container_name: db
+    restart: always
+    tty: true
+    volumes: 
+      - ./mysql/init.sql:/data/application/init.sql
+    environment: 
+      - MYSQL_DATABASE=test
+      - MYSQL_ROOT_PASSWORD=root
+    networks: 
+      - netw
+
+networks: 
+  netw:
+    driver: bridge     
