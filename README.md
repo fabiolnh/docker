@@ -19,7 +19,7 @@ docker pull fabiolnh/docker_desafio_go:latest
 
 ## Insteresting commands:
 
-- ENTRYPOINT VS RUN:
+- ENTRYPOINT VS CMD:
 ```
   Dockerfile: CMD sleep 5
   $ docker run test sleep 10
