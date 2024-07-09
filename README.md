@@ -28,4 +28,10 @@ docker pull fabiolnh/docker_desafio_go:latest
   Dockerfile ENTRYPOINT ["sleep"]
   $ docker run test 10
   Command at startup: sleep 10
+
+  Dockerfile ENTRYPOINT ["sleep"] CMD ["5"]
+  $ docker run test
+  Command at startup: sleep 5
+  $ docker run test 10
+  Command at startup: sleep 10
 ```
