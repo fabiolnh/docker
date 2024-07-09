@@ -34,4 +34,9 @@ docker pull fabiolnh/docker_desafio_go:latest
   Command at startup: sleep 5
   $ docker run test 10
   Command at startup: sleep 10
+
+  OBS: You can override the entrypoint in the docker run command:
+  $ docker run --entrypoint sleep2 test 10
+  Command at startup: sleep2 10
+
 ```
